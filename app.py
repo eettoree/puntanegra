@@ -10,7 +10,9 @@ except:
     GROQ_KEY = "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"
 
 WHATSAPP_NUMBER = "39079930222"
-BOOKING_URL = "https://be.slope.it/v2/hotel-punta-negra"
+# Nuovo Link Vertical Booking fornito
+BOOKING_URL = "https://reservations.verticalbooking.com/premium/index.html?id_albergo=71&dc=661&lingua_int=ita&id_stile=17978"
+
 H_BLUE = "#1A4B84"
 H_SAND = "#F4F1EA"
 H_DARK = "#0A192F"
@@ -69,20 +71,23 @@ def call_concierge_ai(messages):
         )
         return completion.choices[0].message.content
     except Exception as e:
-        return "Spiacente, il servizio concierge è momentaneamente offline. Chiami lo +39 079 930222."
+        return "Service temporarily unavailable. Please contact +39 079 930222."
 
 apply_hotel_ui()
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
-    welcome = "Benvenuto all'**Hotel Punta Negra**. Sono il suo Concierge Digitale. Desidera informazioni su un **soggiorno**, sulla **disponibilità** delle camere o sta pianificando un **evento/matrimonio**?"
+    # Messaggio di benvenuto bilingue aggiornato
+    welcome = """Benvenuto all'**Hotel Punta Negra**. Sono il suo Concierge Digitale. Desidera informazioni su un soggiorno o sta pianificando un evento?
+    
+*Welcome to **Hotel Punta Negra**. I am your Digital Concierge. Would you like information about a stay or are you planning an event?*"""
     st.session_state.messages.append({"role": "assistant", "content": welcome})
 
 for m in st.session_state.messages:
     with st.chat_message(m["role"]):
         st.markdown(m["content"])
 
-if prompt := st.chat_input("Verifica disponibilità per agosto..."):
+if prompt := st.chat_input("Scriva qui / Write here..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
@@ -107,25 +112,26 @@ if prompt := st.chat_input("Verifica disponibilità per agosto..."):
             cols = st.columns(len(matches))
             for i, p in enumerate(matches):
                 with cols[i]:
-                    # Logica Differenziata tra Camere ed Eventi
                     if p['tp'] == "Eventi":
-                        wa_url = f"https://wa.me/{WHATSAPP_NUMBER}?text=Vorrei%20un%20preventivo%20per%20un%20evento/matrimonio"
-                        btn_label = "PREVENTIVO"
+                        wa_url = f"https://wa.me/{WHATSAPP_NUMBER}?text=Preventivo%20evento:%20{p['t'].replace(' ', '%20')}"
+                        btn_label = "EVENT INFO"
+                        action_btn = "" # Nessun booking engine per eventi
                     else:
-                        wa_url = f"https://wa.me/{WHATSAPP_NUMBER}?text=Disponibilità%20per%20{p['t'].replace(' ', '%20')}"
+                        wa_url = f"https://wa.me/{WHATSAPP_NUMBER}?text=Info%20soggiorno%20camera:%20{p['t'].replace(' ', '%20')}"
                         btn_label = "WHATSAPP"
+                        action_btn = f"<a href='{BOOKING_URL}' target='_blank' class='btn-booking'>BOOK NOW</a>"
 
                     st.markdown(f"""
                         <div class="hotel-card">
                             <img src="{p['img']}" class="card-img">
                             <div class="card-body">
                                 <div class="card-title">{p['t']}</div>
-                                <div style="font-size:12px; color:#ccc; height:40px; overflow:hidden;">{p['desc']}</div>
+                                <div style="font-size:12px; color:#ccc; height:45px; overflow:hidden;">{p['desc']}</div>
                                 <div class="btn-grid">
                                     <a href="{p['u']}" target="_blank" class="btn-web">INFO</a>
                                     <a href="{wa_url}" target="_blank" class="btn-wa">{btn_label}</a>
                                 </div>
-                                {"<a href='"+BOOKING_URL+"' target='_blank' class='btn-booking'>PRENOTA ORA</a>" if p['tp'] == "Camere" else ""}
+                                {action_btn}
                             </div>
                         </div>
                     """, unsafe_allow_html=True)
