@@ -1,0 +1,42 @@
+[
+  {
+    "u": "https://www.hotelpuntanegra.it/camere/matrimoniale-vista-mare",
+    "t": "Camera Matrimoniale Vista Mare",
+    "l": "Alghero - Fronte Spiaggia",
+    "tp": "Camere",
+    "desc": "Splendida vista sul Golfo di Alghero, balcone privato, aria condizionata e Wi-Fi.",
+    "img": "https://www.hotelpuntanegra.it/wp-content/uploads/2021/03/matrimoniale-vista-mare-1.jpg"
+  },
+  {
+    "u": "https://www.hotelpuntanegra.it/camere/matrimoniale-vista-pineta",
+    "t": "Camera Matrimoniale Vista Pineta",
+    "l": "Alghero - Lato Parco",
+    "tp": "Camere",
+    "desc": "Immersa nel verde della macchia mediterranea, silenziosa e fresca.",
+    "img": "https://www.hotelpuntanegra.it/wp-content/uploads/2021/03/matrimoniale-vista-pineta-1.jpg"
+  },
+  {
+    "u": "https://www.hotelpuntanegra.it/camere/camera-deluxe",
+    "t": "Camera Deluxe",
+    "l": "Alghero - Comfort Superiore",
+    "tp": "Camere",
+    "desc": "Arredi eleganti, spazi ampi e terrazza attrezzata con vista mozzafiato.",
+    "img": "https://www.hotelpuntanegra.it/wp-content/uploads/2021/03/camera-deluxe-1.jpg"
+  },
+  {
+    "u": "https://www.hotelpuntanegra.it/camere/family-room",
+    "t": "Family Room",
+    "l": "Alghero - Ideale per Famiglie",
+    "tp": "Camere",
+    "desc": "Due ambienti comunicanti per garantire privacy e comfort a tutta la famiglia.",
+    "img": "https://www.hotelpuntanegra.it/wp-content/uploads/2021/03/family-room-1.jpg"
+  },
+  {
+    "u": "https://www.hotelpuntanegra.it/camere/suite-vista-mare",
+    "t": "Suite Vista Mare",
+    "l": "Alghero - Top Luxury",
+    "tp": "Camere",
+    "desc": "L'eccellenza dell'hotel. Ampia zona giorno, camera da letto separata e grande terrazza sul mare.",
+    "img": "https://www.hotelpuntanegra.it/wp-content/uploads/2021/03/suite-vista-mare-1.jpg"
+  }
+]
