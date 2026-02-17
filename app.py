@@ -6,9 +6,9 @@ from groq import Groq
 # --- CONFIGURAZIONE HOTEL PUNTA NEGRA ---
 # Gestione sicura della chiave API per Streamlit Cloud
 if "GROQ_API_KEY" in st.secrets:
-    GROQ_KEY = st.secrets["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"]
+    GROQ_KEY = st.secrets["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"]
 else:
-    GROQ_KEY = "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"
+    GROQ_KEY = "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"
 
 WHATSAPP_NUMBER = "39079930222"
 # Link corretto Vertical Booking
@@ -177,3 +177,4 @@ if prompt := st.chat_input("Scriva qui / Write here..."):
                     """, unsafe_allow_html=True)
 
     st.session_state.messages.append({"role": "assistant", "content": response})
+
